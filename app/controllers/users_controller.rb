@@ -40,20 +40,22 @@ class UsersController < ApplicationController
 
   def login
     # need to create this route
+    # byebug
     @user = User.find_by(email: params[:email])
     if @user
       if @user.authenticate(params[:password])
         render json: @user
       end
+      # render json: {
+      #   error: true,
+      #   message: "Invalid email or password. Try again."
+      # }, status: :unauthorized
+    else
       render json: {
         error: true,
         message: "Invalid email or password. Try again."
       }, status: :unauthorized
     end
-    render json: {
-      error: true,
-      message: "Invalid email or password. Try again."
-    }, status: :unauthorized
   end
 
   def logout
