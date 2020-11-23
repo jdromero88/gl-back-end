@@ -1,3 +1,3 @@
 class User < ApplicationRecord
-  has_many :grocery_list
+  has_many :grocery_lists
 end
