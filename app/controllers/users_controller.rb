@@ -5,9 +5,11 @@ class UsersController < ApplicationController
   end
 
   def create
+    # byebug
     @user = User.create!(first_name: params[:first_name], last_name: params[:last_name],
       email: params[:email], password_digest: params[:password], avatar: params[:avatar],
       bio: params[:bio])
+    return render json: @user
   end
 
   def show
@@ -44,14 +46,14 @@ class UsersController < ApplicationController
     @user = User.find_by(email: params[:email])
     if @user
       if @user.authenticate(params[:password])
-        render json: @user
+        return render json: @user
       end
-      # render json: {
-      #   error: true,
-      #   message: "Invalid email or password. Try again."
-      # }, status: :unauthorized
+      return render json: {
+        error: true,
+        message: "Invalid email or password. Try again."
+      }, status: :unauthorized
     else
-      render json: {
+      return render json: {
         error: true,
         message: "Invalid email or password. Try again."
       }, status: :unauthorized
