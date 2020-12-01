@@ -6,7 +6,7 @@ class GroceryListsController < ApplicationController
 
   def create
     @groceryList = GroceryList.create!(title: params[:title], active: params[:active],
-      user_id: params[:user_id]])
+      user_id: params[:user_id])
     return render json: @groceryList
   end
 

@@ -9,3 +9,8 @@
 
 jr = User.create!(email: "jr@gmail.com", password: "password")
 km = User.create!(email: "km@gmail.com", password: "password")
+
+tortillas = Product.create!(name: "tortillas", description: "tortillas para burritos.")
+leche = Product.create!(name: "leche", description: "leche.")
+
+listaUno = GroceryList.create!(title: "Lista Uno", active: true, user_id: jr.id)
