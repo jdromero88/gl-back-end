@@ -21,5 +21,30 @@ class ProductsController < ApplicationController
     }
   end
 
+  def update
+    @product = Product.find(params[:id])
+    if @product
+      return render json: @product
+    end
+    return render json: {
+      error: true,
+      message: "Product not found or doesn't exist."
+    }
+  end
+
+  def destroy
+    @product = Product.find(params[:id])
+    if @product
+      @product.destroy
+      return render json: {
+        error: false,
+        message: "Product deleted. Success!"
+      }
+    end
+    return render json: {
+      error: true,
+      message: "Product not found. Can't delete."
+    }
+  end
 
 end
