@@ -10,6 +10,7 @@ class GroceryListDetailsController < ApplicationController
       grocery_lists_id: params[:grocery_lists_id],
       product_id: params[:product_id]
     )
+    return render json: @groceryListDetail
   end
 
 end
