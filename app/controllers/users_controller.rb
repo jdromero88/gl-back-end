@@ -6,8 +6,11 @@ class UsersController < ApplicationController
 
   def create
     # byebug
-    @user = User.create!(first_name: params[:first_name], last_name: params[:last_name],
-      email: params[:email], password_digest: params[:password], avatar: params[:avatar],
+    @user = User.create!(first_name: params[:first_name],
+      last_name: params[:last_name],
+      email: params[:email],
+      password_digest: params[:password],
+      avatar: params[:avatar],
       bio: params[:bio])
     return render json: @user
   end
@@ -20,8 +23,11 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user
-      @user.update!(first_name: params[:first_name], last_name: params[:last_name],
-        email: params[:email], password_digest: params[:password], avatar: params[:avatar],
+      @user.update!(first_name: params[:first_name],
+        last_name: params[:last_name],
+        email: params[:email],
+        password_digest: params[:password],
+        avatar: params[:avatar],
         bio: params[:bio])
       return render json: @user
     end
